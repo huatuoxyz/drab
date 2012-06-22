@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+gem 'slop', '~> 2.0'
+require 'slop'
+
+argv = ARGV.dup
+slop = Slop.new(:strict => true, :help => true)
+slop.banner "Usage: drab [options] [directory]"
+slop.on :d, :debug, 'Enable debug mode'
+slop.on :n, :'no-logo', 'No Logo'
+slop.on :c, :command, "Invoke a command and exit", true
+slop.on :'--no-stream', "No stream mode"
+begin
+  slop.parse!(argv)
+rescue => e
+  puts e
+  exit!
+end
+options = slop.to_hash
+options.delete(:help)
+options[:dir] = argv.shift unless argv.empty?
+
+require 'pathname'
+$:.unshift Pathname.new(__FILE__).realpath.join('../../lib') if $0 == __FILE__
+require "drab/version"
+
+command = options.delete(:command)
+no_logo = options.delete(:'no-logo')
+
+if !no_logo && !command
+  print "\e[31m"
+  puts %q{
+    Drab.gem
+  }.
+  gsub(/^\n/, '') + "v#{Drab::VERSION}".rjust(10) + "\n\n"
+  print "\e[0m"
+end
+
+require 'drab'
+if command
+  Drab.invoke(command, options)
+else
+  Drab.start(options)
+end
