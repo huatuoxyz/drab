@@ -1,8 +1,33 @@
 Drab.gem
+
+
 ====
 
 Terminal-based Twitter Client with Streaming API support.
 Only supports Ruby 1.9.
+
+
+Install
+----
+
+You'll need openssl and readline support with your 1.9.2. If you are
+using rvm you can run:
+
+    $ rvm pkg install openssl
+    $ rvm remove 1.9.2
+    $ rvm install 1.9.2 --with-openssl-dir=$HOME/.rvm/usr \
+      --with-readline-dir=$HOME/.rvm/usr
+
+Then install the gem:
+
+    $ gem install earthquake
+
+**Ubuntu:** EventMachine needs the package libssl-dev.
+
+    $ sudo apt-get install libssl-dev
+
+Usage
+----
 
 ### Launch
 
@@ -315,17 +340,3 @@ The block that is specified for Drab.init will be reloaded at any command line i
       end
     end
 
-TODO
-----
-
-* mark my tweet
-* Drab should parse ARGV
-* ruby1.9nize
-* guideline for plugin
-* deal proxy
-* spec
-
-Copyright
-----
-
-Copyright (c) 2011 jugyo. See LICENSE.txt for further details.
