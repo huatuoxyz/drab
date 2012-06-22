@@ -20,7 +20,7 @@ using rvm you can run:
 
 Then install the gem:
 
-    $ gem install earthquake
+    $ gem install drab
 
 **Ubuntu:** EventMachine needs the package libssl-dev.
 
