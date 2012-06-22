@@ -16,8 +16,7 @@ using rvm you can run:
 	$ rvm pkg install readline
     $ rvm pkg install openssl
     $ rvm remove 1.9.2
-    $ rvm install 1.9.2 --with-openssl-dir=$HOME/.rvm/usr \
-      --with-readline-dir=$HOME/.rvm/usr
+    $ rvm install 1.9.2 --with-openssl-dir=$HOME/.rvm/usr --with-readline-dir=$HOME/.rvm/usr
 
 Then install the gem:
 
