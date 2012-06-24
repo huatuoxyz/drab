@@ -3,7 +3,8 @@ Drab.gem
 ====
 
 Terminal-based Twitter Client with Streaming API support. support only facebook Post
-Only supports Ruby 1.9.
+Only supports Ruby 1.9.   
+This gem is based earthquake
 
 Install
 ----
