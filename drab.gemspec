@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Drab::VERSION
   s.authors     = ["Dongri Jin"]
   s.email       = ["dongriab@gmail.com"]
-  s.homepage    = "https://github.com/dongriab/Drab.gem"
+  s.homepage    = "https://github.com/dongriab/drab.gem"
   s.summary     = %q{Terminal Twitter Facebook Client}
   s.description = %q{Twitter Client on Terminal with Twitter Streaming API. Facebook Post}
 
