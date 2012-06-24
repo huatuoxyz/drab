@@ -70,7 +70,10 @@ module Drab
         confirm_type:    :y,
         expand_url:      false,
         thread_indent:   "  ",
-        no_data_timeout: 30
+        no_data_timeout: 30,
+        consumer_facebook_id:    consumer['app_id'],
+        consumer_facebook_secret: consumer['app_secret'],
+        consumer_facebook_redirect_url: consumer['redirect_url']
       }
     end
 
@@ -98,6 +101,9 @@ module Drab
       end
 
       get_access_token unless self.config[:token] && self.config[:secret]
+      
+      get_facebook_token unless self.config[:facebook_token] 
+      
     end
 
     def load_plugins
@@ -260,6 +266,13 @@ module Drab
 
     def browse(url)
       Launchy.open(url)
+    end
+    
+    def logout
+      File.open(config[:file], 'w') do |f|
+        f.puts ""
+      end
+      stop
     end
   end
 

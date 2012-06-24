@@ -70,16 +70,27 @@ module Drab
     end
 
     def confirm(message, type = config[:confirm_type])
+      
       s = case type
           when :y
-            ask("#{message} [Yn] ".u)
+            i = ask("#{message} [Yn] ".u)
           when :n
-            ask("#{message} [yN] ".u)
+            i = ask("#{message} [yN] ".u)
+          when :a
+            i = ask("#{message} [Yna] ".u)
           else
             raise "type must be :y or :n"
           end
       s = type.to_s if s.empty?
-      if m = s.match(/^[yn]$/i)
+      if s.match(/^[yna]$/i)
+        if i.downcase == 'a'
+          return 'a'
+        elsif i.downcase == 'y' or i.downcase == ''
+          return true
+        else
+          return false
+        end
+      elsif m = s.match(/^[yn]$/i)
         return m[0].downcase == 'y'
       else
         confirm(message, type)

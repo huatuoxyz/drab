@@ -21,12 +21,28 @@ module Drab
 
       puts "Saving 'token' and 'secret' to '#{config[:file]}'"
       File.open(config[:file], 'a') do |f|
-        f << "\n"
         f << "Drab.config[:token] = '#{config[:token]}'"
         f << "\n"
         f << "Drab.config[:secret] = '#{config[:secret]}'"
       end
     end
+    
+    def get_facebook_token
+      puts "1) open: #{facebook_client.authorize_url}"
+      browse(facebook_client.authorize_url)
+      
+      print "2) Enter access token: "
+      token = STDIN.gets.strip
+      
+      config[:facebook_token] = token
+      
+      puts "Saving 'facebook access token' to '#{config[:file]}'"
+      File.open(config[:file], 'a') do |f|
+        f << "\n"
+        f << "Drab.config[:facebook_token] = '#{config[:facebook_token]}'"
+      end
+    end
+    
   end
 
   extend GetAccessToken

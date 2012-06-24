@@ -1,33 +1,30 @@
 Drab.gem
 
-
 ====
 
-Terminal-based Twitter Client with Streaming API support.
+Terminal-based Twitter Client with Streaming API support. support only facebook Post
 Only supports Ruby 1.9.
-
 
 Install
 ----
 
-You'll need openssl and readline support with your 1.9.2. If you are
+You'll need readline support with your 1.9.2. If you are
 using rvm you can run:
 
 	$ rvm pkg install readline
-    $ rvm pkg install openssl
     $ rvm remove 1.9.2
+<<<<<<< HEAD
     #$ rvm install 1.9.2 --with-openssl-dir=$HOME/.rvm/usr --with-readline-dir=$HOME/.rvm/usr
     $ rvm install 1.9.2 --with-readline-dir=$HOME/.rvm/usr
     
 --with-openssl-dir=$HOME/.rvm/usr facebook_oauth error
+=======
+    $ rvm install 1.9.2 --with-readline-dir=$HOME/.rvm/usr
+>>>>>>> version 0.0.3
 
 Then install the gem:
 
     $ gem install drab
-
-**Ubuntu:** EventMachine needs the package libssl-dev.
-
-    $ sudo apt-get install libssl-dev
 
 Usage
 ----
@@ -42,7 +39,12 @@ Commands
 ### Tweet
 
     ⚡ Hello World!
-
+	update 'Hello World!' [Yna] 
+	
+	# y or enter = Only Twitter
+	# n = cancel
+	# a = Post Twitter And Facebook
+	
 ### Show
 
     ⚡ $xx
@@ -81,6 +83,10 @@ Commands
 ### Exit
 
     ⚡ :exit
+
+### Logout
+
+	⚡ :logout
 
 ### Reconnect
 

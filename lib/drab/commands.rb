@@ -129,7 +129,14 @@ Drab.init do
 
   command :update do |m|
     text = _eval_as_ruby_string(m[1])
-    async_e { twitter.update(text) } if confirm("update '#{text}'")
+    ret = confirm("update '#{text}'", type=:a)
+    if ret == 'a'
+      async_e { twitter.update(text) }
+      async_e { facebook_client(self.config[:facebook_token]).me.feed(:create, :message=>text) }
+    elsif ret == true
+      async_e { twitter.update(text) }
+    else
+    end
   end
 
   command %r|^[^:\$].*| do |m|
@@ -537,4 +544,9 @@ Drab.init do
     ⚡ :api post /statuses/update.json?status=test
     ⚡ :api get /statuses/mentions.json?trim_user=true
   HELP
+  
+  command :logout do
+    logout
+  end
+  
 end
