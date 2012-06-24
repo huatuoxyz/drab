@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Dongri Jin"]
   s.email       = ["dongriab@gmail.com"]
   s.homepage    = "https://github.com/dongriab/Drab.gem"
-  s.summary     = %q{Terminal Twitter Client}
-  s.description = %q{Twitter Client on Terminal with Twitter Streaming API.}
+  s.summary     = %q{Terminal Twitter Facebook Client}
+  s.description = %q{Twitter Client on Terminal with Twitter Streaming API. Facebook Post}
 
   s.rubyforge_project = "drab"
 
