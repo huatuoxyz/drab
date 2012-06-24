@@ -13,14 +13,7 @@ using rvm you can run:
 
 	$ rvm pkg install readline
     $ rvm remove 1.9.2
-<<<<<<< HEAD
-    #$ rvm install 1.9.2 --with-openssl-dir=$HOME/.rvm/usr --with-readline-dir=$HOME/.rvm/usr
     $ rvm install 1.9.2 --with-readline-dir=$HOME/.rvm/usr
-    
---with-openssl-dir=$HOME/.rvm/usr facebook_oauth error
-=======
-    $ rvm install 1.9.2 --with-readline-dir=$HOME/.rvm/usr
->>>>>>> version 0.0.3
 
 Then install the gem:
 
