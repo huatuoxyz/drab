@@ -1,8 +1,8 @@
-Drab.gem
+drab.gem
 
 ====
 
-Terminal-based Twitter Client with Streaming API support. support only facebook Post
+Terminal-based Twitter Client with Streaming API support. support only Facebook Post
 Only supports Ruby 1.9.   
 This gem is based earthquake
 

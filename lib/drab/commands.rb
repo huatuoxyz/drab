@@ -11,7 +11,8 @@ Drab.init do
   end
 
   help :exit, 'exit from drab'
-
+  help :logout, 'clear authentication information'
+  
   # :help
 
   command :help do
@@ -240,6 +241,12 @@ Drab.init do
     ⚡ :recent user/list
   HELP
 
+  help :tl, "show time line", <<-HELP
+    ⚡ :tl
+    ⚡ :tl user
+    ⚡ :tl user/list
+  HELP
+
   command :user do |m|
     user = twitter.show(m[1])
     if user.key?("error")
@@ -324,12 +331,17 @@ Drab.init do
       async_e { twitter.update(text) }
     end
   end
-
+  
   help :retweet, "retweets or quote status", <<-HELP
     ⚡ :retweet $aa
     ⚡ :retweet $aa // LOL
   HELP
-
+  
+  help :rt, "retweets or quote status", <<-HELP
+    ⚡ :rt $aa
+    ⚡ :rt $aa // LOL
+  HELP
+  
   command :favorite do |m|
     tweet = twitter.status(m[1])
     if confirm("favorite '#{tweet["user"]["screen_name"]}: #{tweet["text"]}'")
@@ -547,6 +559,25 @@ Drab.init do
   
   command :logout do
     logout
+  end
+  
+  command :tl do
+    puts_items twitter.home_timeline(:count => config[:recent_count])
+  end
+  
+  command %r|^:rt\s+(\d+)$|, :as => :retweet do |m|
+    target = twitter.status(m[1])
+    if confirm("retweet 'RT @#{target["user"]["screen_name"]}: #{target["text"]}'")
+      async_e { twitter.retweet(m[1]) }
+    end
+  end
+
+  command %r|^:rt\s+(\d+)\s+(.*)$|, :as => :retweet do |m|
+    target = twitter.status(m[1])
+    text = "#{m[2]} #{config[:quotetweet] ? "QT" : "RT"} @#{target["user"]["screen_name"]}: #{target["text"]}"
+    if confirm("unofficial retweet '#{text}'")
+      async_e { twitter.update(text) }
+    end
   end
   
 end
