@@ -170,6 +170,12 @@ Drab.init do
     ⚡ $aa goodbye world
   HELP
 
+  help :rp, "replys a tweet", <<-HELP
+    [$aa] hello world
+    ⚡ :reply $aa goodbye world
+    ⚡ $aa goodbye world
+  HELP
+  
   # $xx hi!
   command %r|^(\$[^\s]+)\s+(.*)$| do |m|
     input(":reply #{m[1..2].join(' ')}")
@@ -225,7 +231,7 @@ Drab.init do
     puts_items twitter.home_timeline(:count => config[:recent_count])
   end
 
-  # :recent jugyo
+  # :recent dongriab
   command %r|^:recent\s+([^\/\s]+)$|, :as => :recent do |m|
     puts_items twitter.user_timeline(:screen_name => m[1])
   end
@@ -563,6 +569,16 @@ Drab.init do
   
   command :tl do
     puts_items twitter.home_timeline(:count => config[:recent_count])
+  end
+  
+  # :recent dongriab
+  command %r|^:tl\s+([^\/\s]+)$|, :as => :recent do |m|
+    puts_items twitter.user_timeline(:screen_name => m[1])
+  end
+
+  # :recent dongriab/ruby-committers
+  command %r|^:tl\s+([^\s]+)\/([^\s]+)$|, :as => :recent do |m|
+    puts_items twitter.list_statuses(m[1], m[2])
   end
   
   command %r|^:rt\s+(\d+)$|, :as => :retweet do |m|

@@ -53,18 +53,26 @@ Commands
 
     ⚡ $xx hi!
 
+    ⚡ :reply $xx hi!
+
+    ⚡ :rp $xx hi!
+
 ### Delete
 
     ⚡ :delete $xx
 
 ### Retweet
 
-    ⚡ :retweet $xx
+	⚡ :retweet $xx
+	⚡ :rt $xx
 
 ### Timeline
 
-    ⚡ :recent
-    ⚡ :recent jugyo
+	⚡ :recent
+	⚡ :recent dongriab
+
+	⚡ :tl
+	⚡ :tl dongriab
 
 ### Lists
 
@@ -130,7 +138,7 @@ Commands
     ⚡ :filter keyword drabgem twitter
 
     # users
-    ⚡ :filter user jugyo matsuu
+    ⚡ :filter user dongriab matsuu
 
     # return to normal user stream
     ⚡ :filter off
@@ -253,7 +261,7 @@ You can try it by using the :eval command:
 Plugins
 ----
 
-See [https://github.com/jugyo/drab/wiki](https://github.com/jugyo/drab/wiki)
+See [https://github.com/dongriab/drab/wiki](https://github.com/dongriab/drab/wiki)
 
 Making Plugins
 ----
@@ -343,7 +351,7 @@ The block that is specified for Drab.init will be reloaded at any command line i
 
     Drab.init do
       completion do |text|
-        ['jugyo', 'drab', '#eqrb'].grep(/^#{Regexp.quote(text)}/)
+        ['dongriab', 'drab', '#eqrb'].grep(/^#{Regexp.quote(text)}/)
       end
     end
 
