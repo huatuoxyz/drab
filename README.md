@@ -1,5 +1,9 @@
-drab.gem
-
+	       __                    __  
+	  ____/ /   _____  ____ _   / /_ 
+	 / __  /   / ___/ / __ `/  / __ \
+	/ /_/ /   / /    / /_/ /  / /_/ /
+	\__,_/   /_/     \__,_/  /_.___/ 
+                                 
 ====
 
 Terminal-based Twitter Client with Streaming API support. support only Facebook Post
