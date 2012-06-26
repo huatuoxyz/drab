@@ -580,4 +580,14 @@ Drab.init do
     end
   end
   
+  command %r|^:rp\s+(\d+)\s+(.*)|, :as => :reply do |m|
+    in_reply_to_status_id = m[1]
+    target = twitter.status(in_reply_to_status_id)
+    screen_name = target["user"]["screen_name"]
+    text = "@#{screen_name} #{m[2]}"
+    if confirm(["'@#{screen_name}: #{target["text"]}'".c(:info), "reply '#{text}'"].join("\n"))
+      async_e { twitter.update(text, :in_reply_to_status_id => in_reply_to_status_id) }
+    end
+  end
+  
 end

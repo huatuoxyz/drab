@@ -29,8 +29,12 @@ no_logo = options.delete(:'no-logo')
 if !no_logo && !command
   print "\e[31m"
   puts %q{
-    drab.gem
-  }.
+           __                    __  
+      ____/ /   _____  ____ _   / /_ 
+     / __  /   / ___/ / __ `/  / __ \
+    / /_/ /   / /    / /_/ /  / /_/ /
+    \__,_/   /_/     \__,_/  /_.___/ 
+                          }.
   gsub(/^\n/, '') + "v#{Drab::VERSION}".rjust(10) + "\n\n"
   print "\e[0m"
 end
